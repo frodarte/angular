@@ -6,8 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  public title: string="Titulo 1";
+
+  public style: any ={
+    color : 'blue', 'font-size' : '36px'
+  }
+
+  public categoria : string='A';
   
-  public title: string = "Titulo maldito"
+
   constructor() { }
 
   ngOnInit() {

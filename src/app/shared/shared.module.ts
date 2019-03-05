@@ -9,6 +9,6 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [CardComponent, HeaderComponent, BodyComponent, FooterComponent],
   imports: [
     CommonModule
-  ], exports: [CardComponent, HeaderComponent, BodyComponent, FooterComponent]
+  ], exports:[CardComponent, HeaderComponent, BodyComponent, FooterComponent]
 })
 export class SharedModule { }

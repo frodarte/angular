@@ -1,3 +1,9 @@
-<div class="card-header">
+<div class="card-header" [ngStyle]="style">
     {{ title }}
+
+    <div [ngSwitch]="categoria">
+        <p *ngSwitchCase="'E'">ELECTRONICO</p>
+        <p *ngSwitchCase="'A'">ABARROTES</p>
+    </div>
+
 </div>
