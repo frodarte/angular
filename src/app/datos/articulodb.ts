@@ -29,7 +29,6 @@ export const articulosDB: Articulo []=[
         title: 'Television33',
         description: '40 pulgadas',
         promotion: true,
-        url: 'assets/tv2.jpg',
         id: 3,
         categoria: 'E'
       },

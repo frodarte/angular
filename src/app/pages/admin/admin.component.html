@@ -4,9 +4,9 @@
             <thead>
                 <button (click)="nuevo(template)" class="btn btn-primary btn-xs pull-right"><b>+</b>Nuevo</button>
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Parent ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
@@ -14,11 +14,13 @@
                 <td>{{art.nombre}}</td>
                 <td>{{art.description}}</td>
                 <td>{{art.precio}}</td>
-                <td class="text-center"><button class='btn btn-info btn-xs'>
-                    <span class="glyphicon glyphicon-edit"></span> Editar</button>
+                <td class="text-center">
+                    <button (click)="editar(art, template)" class='btn btn-info btn-xs'>
+                        <span class="glyphicon glyphicon-edit"></span> Editar
+                    </button>
                     <button (click)=borrar(art) class="btn btn-danger btn-xs">
-                        <span class="glyphicon glyphicon-remove"> 
-                    </span>Borrar</button>
+                        <span class="glyphicon glyphicon-remove"></span>Borrar
+                    </button>
                 </td>
             </tr>
         </table>
@@ -31,7 +33,63 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+
+
     <div class="modal-body">
-        <button (click)="agregar()">Agregar</button>
+
+        <div *ngIf="!formArticulo.valid" class="alert alert-danger" role="alert">
+            El Formulario es invalido
+        </div>
+        <div *ngIf="formArticulo.valid" class="alert alert-success" role="alert">
+            El formulario es correcto
+        </div>
+
+        <div [formGroup]="formArticulo">
+            {{ formArticulo.value | json }}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input formControlName="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter nombre">
+                <!--  <small *ngIf="formArticulo.get('nombre').errors?.required" id="emailHelp" class=form-text text-muted -->
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Marca</label>
+                <input formControlName="marca" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter marca">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Precio</label>
+                <input formControlName="precio" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter precio">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Description</label>
+                <input formControlName="description" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Promotion</label>
+                <input formControlName="promotion" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter promotion">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">ID</label>
+                <input formControlName="id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter id">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Categoria</label>
+                <input formControlName="categoria" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter categoria">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+
+            <div class="modal-body">
+                <button (click)="agregar()">Agregar</button>
+            </div>
+        </div>
     </div>
 </ng-template>

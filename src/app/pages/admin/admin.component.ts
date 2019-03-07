@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ArticulosService } from '../../services/articulos.service';
 import { Articulo } from '../../../modelos/articulo';
-
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -13,10 +13,21 @@ import { Articulo } from '../../../modelos/articulo';
 export class AdminComponent implements OnInit {
 
 public articulos:Articulo[];
+public formArticulo: FormGroup;
 
   ngOnInit() {
     this.articulos= this.as.articulos;
-    
+    this.formArticulo= new FormGroup ({
+      nombre: new FormControl(null, Validators.required),
+      marca: new FormControl(),
+      precio: new FormControl(),
+      title: new FormControl(),
+      description: new FormControl(),
+      promotion: new FormControl(),
+      id: new FormControl(null),
+      categoria: new FormControl()
+
+    });
   }
 
   modalRef: BsModalRef;
@@ -26,23 +37,25 @@ public articulos:Articulo[];
  
   nuevo(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+    this.formArticulo.reset();
+    this.formArticulo.patchValue({
+      id:null
+    });
   }
 
   public agregar (){
-    this.as.nuevo({
 
-      nombre: 'Television22',
-        marca: 'LG',
-        precio: 4200,
-        title: 'Television22',
-        description: '32 pulgadas',
-        promotion: true,
-        url: 'assets/img/samsung.jpg',
-        id: 2,
-        categoria: 'A',
-        fecha: new Date()
-    });
-    this.articulos=this.as.articulos;
+    if (this.formArticulo.value.id == null) {
+      let articulo: Articulo= this.formArticulo.value;
+      articulo.id=this.articulos.length+1;
+      this.as.nuevo(articulo);
+      this.articulos=this.as.articulos;
+      this.modalRef.hide();
+    } else {
+      let articulo: Articulo = this.formArticulo.value;
+      this.as.actualizar(articulo);
+      this.articulos=this.as.articulos;
+    }
     this.modalRef.hide();
   }
 
@@ -54,4 +67,10 @@ public articulos:Articulo[];
       }
     }
   }
+
+  public editar(articulo: Articulo, template: TemplateRef<any>) {
+    this.modalRef=this.modalService.show(template);
+    this.formArticulo.patchValue(articulo);
+  }
+
 }

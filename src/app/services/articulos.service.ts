@@ -27,4 +27,13 @@ export class ArticulosService {
       }
     }
   }
+  public actualizar(articulo: Articulo) {
+
+    for (let i=0; i<this.articulos.length; i++) {
+      if (this.articulos[i].id == articulo.id) {
+        this.articulos[i]=articulo;
+      }
+    }
+  }
+
 }
