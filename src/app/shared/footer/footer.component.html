@@ -1,20 +1,27 @@
 <div class="card-footer text-muted" [ngClass]="{'border-black':color}">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <div *ngFor="let boton of botones" class="form-inline my-2 my-lg-0">
+            <div *ngFor="let boton of botones" class="form-inline my-2 my-lg-0">
 
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{boton.name}}</button>
-      </div>
-      <div *ngIf="promotion" class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{boton.name}}</button>
+            </div>
+            <div *ngIf="promotion" class="form-inline my-2 my-lg-0">
 
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="aplicarPromocion()">Aplicar promoción</button>
-      </div>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="aplicarPromocion()">Aplicar promoción</button>
+            </div>
+            <div class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="eliminar()">
+          Eliminar</button>
+            </div>
 
+            <div class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="seleccionar()">
+          Seleccionar</button>
+            </div>
 
-
-    </div>
-  </nav>
+        </div>
+    </nav>
 </div>

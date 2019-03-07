@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -17,7 +17,9 @@ export class FooterComponent implements OnInit {
 
   public promotion:boolean=true;
   public color: boolean=false;
-
+  public colorBorder: boolean=false;
+  @Output() onEliminar: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onSeleccionar: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit() {
@@ -27,5 +29,15 @@ export class FooterComponent implements OnInit {
     this.color=!this.color;
   }
 
+   public eliminar() {
+    this.onEliminar.emit(true);
+     console.log("estoy en Eliminar");
+   }
+
+   public seleccionar() {
+     console.log("estoy en Seleccionar")
+     this.onSeleccionar.emit(true);
+     this.colorBorder = !this.colorBorder;
+   }
 
 }

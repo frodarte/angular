@@ -1,4 +1,5 @@
 export interface Articulo {
+    id? :number;
     nombre :string;
     marca? :string;
     precio :number;
@@ -8,6 +9,7 @@ export interface Articulo {
     promotion? :boolean;
     categoria? :string;
     url? :string;
+    fecha? : Date;
 
 
 

@@ -1,9 +1,9 @@
-<div class="card text-center">
-    <app-header [titulo]="articulo.title"></app-header>
-    <app-header [titulo]="articulo.categoria"></app-header>
+<div class="card text-center" [ngClass]="{'border-black': colorBorder}">
+    <app-header [titulo]="articulo.title" [categoria]="articulo.categoria"></app-header>
+
     <img [src]="articulo.url" class="card-img-top" alt="...">
 
     <app-body [description]="articulo.description" [price]="articulo.precio"> </app-body>
 
-    <app-footer></app-footer>
+    <app-footer (onEliminar)="accionEliminar($event)" (onSeleccionar)="accionSeleccionar($event)"> </app-footer>
 </div>
