@@ -2,6 +2,8 @@
 
     <!--{{ lista | json }} -->
     <div class="row">
-        <app-card *ngFor="let item of lista" [articulo]="item" (onQuitar)="quitar($event)"> </app-card>
+        <div class="col-md-4" *ngFor="let item of lista">
+            <app-card [articulo]="item" (onQuitar)="quitar($event)"> </app-card>
+        </div>
     </div>
 </div>
